@@ -1,7 +1,7 @@
 # CSCI215_Lab_07
 Event Object usage
 
-Name: _______________________________________
+Name: Joshua Lumpkin
 
 ## DUE: 10 Nov 2018 @ 11:59 pm
 
