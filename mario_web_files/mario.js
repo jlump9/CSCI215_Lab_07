@@ -103,21 +103,6 @@ function draw() {
 	 *
 	 *
 	 */
-	function Walking(){
-
-	    if (Mario.moving == 'left' && Mario.x >= 20){
-	        ctx.drawImage(bgImage, 0, 0);
-	        Mario.Image.src = 'marioturnsleft.png';
-	        ctx.drawImage(Mario.Image, Mario.x, Mario.y, Mario.w, Mario.h);
-	        Mario.x -= 10;
-        }
-
-        else if (Mario.moving =='right' && Mario.x <= 1100){
-            ctx.drawImage(bgImage, 0, 0);
-            Mario.Image.src = 'marioturnsright.png';
-            ctx.drawImage(Mario.Image, Mario.x, Mario.y, Mario.w, Mario.h);
-            Mario.x += 10;
-    }
 
 
 	document.body.onkeydown = function(e) {  // listen for a key
@@ -130,19 +115,24 @@ function draw() {
         	Mario.timer = setInterval(render, Mario.timerInterval);
     	}
 
-    	else if (keycode == 37 && (Mario.moving == 'no' || Mario.moving == 'left')) {
-            Mario.moving = 'left';
-            Walking();
-        }
-        else if (keycode == 39 && (Mario.moving == 'no' || Mario.moving == 'right')) {
-                Mario.moving = 'right';
-                Walking();
+    	else if (keycode == 37 && Mario.moving == 'no') {
+    	    Mario.Image.src = 'marioturnsleft.png';
+            ctx.drawImage(bgImage, 0, 0);
+            ctx.drawImage(Mario.Image, Mario.x, Mario.y, Mario.w, Mario.h);
+            if (Mario.x >= 5){
+                Mario.x = Mario.x - 5;
+            }
+            }
+        else if (keycode == 39) {
+            Mario.Image.src = 'marioturnsright.png';
+            ctx.drawImage(bgImage, 0, 0);
+            ctx.drawImage(Mario.Image, Mario.x, Mario.y, Mario.w, Mario.h);
+            if (Mario.x <= 1150) {
+                Mario.x = Mario.x + 5;
+            }
     	}
     }
 
-
-
-    }
 
     /* TODO:
      * TODO: Capture keycodes for L and R. In each, set a timeout that calls a function
@@ -157,6 +147,7 @@ function draw() {
         }
         if (keycode === 39){
             Mario.Image.src = "marioturnsright.png";
+            ctx.drawImage(Mario.Image, Mario.x, Mario.y, Mario.w, Mario.h);
         }
     }
 
