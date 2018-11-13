@@ -115,7 +115,7 @@ function draw() {
         	Mario.timer = setInterval(render, Mario.timerInterval);
     	}
 
-    	else if (keycode == 37 && Mario.moving == 'no') {
+    	else if (keycode == 37) {
     	    Mario.Image.src = 'marioturnsleft.png';
             ctx.drawImage(bgImage, 0, 0);
             ctx.drawImage(Mario.Image, Mario.x, Mario.y, Mario.w, Mario.h);
@@ -127,8 +127,8 @@ function draw() {
             Mario.Image.src = 'marioturnsright.png';
             ctx.drawImage(bgImage, 0, 0);
             ctx.drawImage(Mario.Image, Mario.x, Mario.y, Mario.w, Mario.h);
-            if (Mario.x <= 1150) {
-                Mario.x = Mario.x + 5;
+            if (Mario.x <= 1155) {
+                Mario.x = Mario.x +=5;
             }
     	}
     }
@@ -142,12 +142,8 @@ function draw() {
         e = event || window.event;
         var keycode = e.charCode || e.keyCode;
 
-        if (keycode === 37){
+        if (keycode === 37 || keycode === 39){
             setTimeout(faceForward, 200);
-        }
-        if (keycode === 39){
-            Mario.Image.src = "marioturnsright.png";
-            ctx.drawImage(Mario.Image, Mario.x, Mario.y, Mario.w, Mario.h);
         }
     }
 
